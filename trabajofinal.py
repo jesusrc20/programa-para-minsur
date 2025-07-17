@@ -29,53 +29,56 @@ class Unidad:
 
 def ingresar_cuenta(users_lists, passwords_lists):
     verificacion = False
-
-    print("------------------------------------")
-    print("Escriba sus respectivas credenciales")
-    print("------------------------------------")
+    print("")
+    print("┌" + "─" * 40 + "┐")
+    print("│{:^40}│".format("SISTEMA DE REGISTRO DE MINSUR"))
+    print("├" + "─" * 40 + "┤")
+    print("│{:^40}│".format("Ingrese sus credenciales."))
+    print("└" + "─" * 40 + "┘")
 
     while verificacion == False:
       id = int(input("DNI: "))
       password = str(input("Contraseña: "))
 
       for i in range(len(users_lists)):
-        print(i)
-        print(id)
-        print(password)
-        print(users_lists[i])
-        print(passwords_lists[i])
+        # print(i)
+        # print(id)
+        # print(password)
+        # print(users_lists[i])
+        # print(passwords_lists[i])
         if id == users_lists[i] and password == passwords_lists[i]:
           verificacion = True
 
       if verificacion == True:
-        print("--------------------------------------")
-        print("Verificación completa, usuario válido")
-        print("--------------------------------------")
+        print("┌" + "─" * 40 + "┐")
+        print("│{:^40}│".format("Verificación completa, usuario válido"))
+        print("└" + "─" * 40 + "┘")
       else:
-        print("--------------------------------------")
-        print("Usuario no registrado, intente de nuevo")
-        print("--------------------------------------")
+        print("┌" + "─" * 40 + "┐")
+        print("│{:^40}│".format("Usuario no registrado, intente de nuevo"))
+        print("└" + "─" * 40 + "┘")
 
 def crear_cuenta(users_lists, passwords_lists):    #Podríamos agregar una base de datos con el DNI de los trabajadores en esta parte
     id = 100000000
     while id > 99999999 or id < 9999999:           #Se verifica que el DNI sea de 8 dígitos
-      print("------------------------------------")
-      print("   Ingrese los datos a registrar")
-      print("------------------------------------")
+      print("")
+      print("┌" + "─" * 40 + "┐")
+      print("│{:^40}│".format("Ingrese los datos a registrar"))
+      print("└" + "─" * 40 + "┘")
+      
       id = int(input("DNI: "))
       password = str(input("Contraseña: "))
 
       if id > 99999999 or id < 9999999:
-        print("------------------------------------")
-        print(" DNI NO VALIDO. INTENTE NUEVAMENTE")
-        print("------------------------------------")
+        print("┌" + "─" * 40 + "┐")
+        print("│{:^40}│".format("DNI NO VALIDO. INTENTE NUEVAMENTE"))
+        print("└" + "─" * 40 + "┘")
 
     users_lists.append(id)
     passwords_lists.append(password)
-
-    print("------------------------------------")
-    print("  Datos registrados correctamente")
-    print("------------------------------------")
+    print("┌" + "─" * 40 + "┐")
+    print("│{:^40}│".format("Datos registrados correctamente"))
+    print("└" + "─" * 40 + "┘")
 
 
 def pantalla_login(): #Lo primero en mostrarse
@@ -86,14 +89,14 @@ def pantalla_login(): #Lo primero en mostrarse
 
     while op != 1:
 
-      print("¿Tiene una cuenta en la plataforma?")
-      print("------------------------------------")
-      print("------------------------------------")
-      print("1. Sí, tengo una cuenta registrada.")
-      print("2. No, crear una una nueva cuenta.")
-      print("------------------------------------")
+      print("┌" + "─" * 40 + "┐")
+      print("│{:^40}│".format("¿Tiene una cuenta en la plataforma?"))
+      print("├" + "─" * 40 + "┤")
+      print("│{:^40}│".format("1. Sí, tengo una cuenta registrada."))
+      print("│{:^40}│".format("2. No, crear una una nueva cuenta."))
+      print("└" + "─" * 40 + "┘")
 
-      op = int(input())
+      op = int(input("Selecciona una opción: "))
 
       if op == 2:
         crear_cuenta(usuarios_lista, contrasenas_lista)
@@ -111,7 +114,6 @@ def calculo_mineral(lista, i): #Se realiza el cálculo del mineral y se devuelve
       multiplicador = 159538.8
     if mineral == "Plata":
       multiplicador = 4404
-
     if mineral == "prueba_admin":    # Simple prueba para comprobar que la variable funcione correctamente
       multiplicador = 2
 
@@ -120,28 +122,31 @@ def calculo_mineral(lista, i): #Se realiza el cálculo del mineral y se devuelve
 def imprimir_lista(lista):#Se imprime la lista y se obtiene el cálculo de ganancia
 
   for i in range(0, len(lista)):
-    print("------------------------------------------------")
-    print(" EMPRESA: ", lista[i].c_name)
-    print("------------------------------------------------")
-    print(" Dirección de la empresa: ", lista[i].c_dir)
-    print(" Nombre del proyecto: ", lista[i].p_name)
-    print(" Locación del proyecto: ", lista[i].p_dir)
-    print(" Costo del proyecto: ", lista[i].p_cost, " Nuevos soles")
-    print(" Mineral a extraer: ", lista[i].m_name)
-    print(" Cantidad del mineral: ", lista[i].m_num, " Kg")
-    print(" Expectativa de ganancia calculada:", calculo_mineral(lista, i), " Nuevos soles")
-    print("------------------------------------------------")
+    print("┌" + "─" * 80 + "┐")
+    print("│{:^80}│".format(f"EMPRESA: {lista[i].c_name}"))
+    print("├" + "─" * 80 + "┤")
+    print("│{:^80}│".format(f"Dirección de la empresa: {lista[i].c_dir}"))
+    print("│{:^80}│".format(f"Nombre del proyecto: {lista[i].p_name}"))
+    print("│{:^80}│".format(f"Locación del proyecto: {lista[i].p_dir}"))
+    print("│{:^80}│".format(f"Costo del proyecto: {lista[i].p_cost} Nuevos soles"))
+    print("│{:^80}│".format(f"Mineral a extraer: {lista[i].m_name}"))
+    print("│{:^80}│".format(f"Cantidad del mineral: {lista[i].m_num} Kg"))
+    print("│{:^80}│".format(f"Expectativa de ganancia calculada: {calculo_mineral(lista, i)} Nuevos soles"))
+    print("└" + "─" * 80 + "┘")
+    print("")
 
 def acceso_unidades(lista):
-  print("-----------------------------------------------------------")
-  print("A continuación las unidades con sus respectivas empresas")
-  print("----------------------------------------------------------")
+  print("")
+  print("┌" + "─" * 80 + "┐")
+  print("│{:^80}│".format("INFORME DE LAS UNIDADES"))
+  
   imprimir_lista(lista)
 
 def agregar_unidad():
-  print("---------------------------------")
-  print("Complete las siguientes preguntas")
-  print("---------------------------------")
+  print("")
+  print("┌" + "─" * 40 + "┐")
+  print("│{:^40}│".format("Complete las siguientes preguntas"))
+  print("└" + "─" * 40 + "┘")
   print("¿Cual es el nombre de la empresa?")
   company_name = str(input())
   print("¿Cual es la direccion de la empresa?")
@@ -158,17 +163,48 @@ def agregar_unidad():
   mine_num = int(input())
 
   unidad_x = Unidad(company_name, company_dir, project_name, project_dir, project_cost, mine_name, mine_num)
-  print("---------------------------------")
-  print("       Unidad guardada")
+  
+  print("┌" + "─" * 40 + "┐")
+  print("│{:^40}│".format("Unidad guardada"))
+  print("└" + "─" * 40 + "┘")
   return unidad_x
 
+def buscar_unidad_por_empresa(lista_unidades):
+  print("")
+  print("┌" + "─" * 80 + "┐")
+  print("│{:^80}│".format("BUSCADOR DE UNIDADES POR NOMBRE DE EMPRESA"))
+  print("└" + "─" * 80 + "┘")
+  
+  nombre_busqueda = input("Ingrese el nombre de la empresa a buscar: ")
+
+  encontrada = False
+  for unidad in lista_unidades:
+    if unidad.c_name.lower() == nombre_busqueda.lower():
+      encontrada = True
+      print("")
+      print("┌" + "─" * 80 + "┐")
+      print("│{:^80}│".format(f"EMPRESA: {unidad.c_name}"))
+      print("├" + "─" * 80 + "┤")
+      print("│{:^80}│".format(f"Dirección de la empresa: {unidad.c_dir}"))
+      print("│{:^80}│".format(f"Nombre del proyecto: {unidad.p_name}"))
+      print("│{:^80}│".format(f"Locación del proyecto: {unidad.p_dir}"))
+      print("│{:^80}│".format(f"Costo del proyecto: {unidad.p_cost} Nuevos soles"))
+      print("│{:^80}│".format(f"Mineral a extraer: {unidad.m_name}"))
+      print("│{:^80}│".format(f"Cantidad del mineral: {unidad.m_num} Kg"))
+      print("│{:^80}│".format(f"Expectativa de ganancia calculada: {calculo_mineral([unidad], 0)} Nuevos soles"))
+      print("└" + "─" * 80 + "┘")
+      print("")
+
+  if encontrada == False:
+    print("┌" + "─" * 40 + "┐")
+    print("│{:^80}│".format("No se encontraron unidades con ese nombre."))
+    print("└" + "─" * 40 + "┘")
 
 def menu_ingreso():
+  
 
   unidad_ejemplo_01 = Unidad("AyacuchoMinas", "Ayacucho", "Extracción Colpa", "Colpa", 2000000, "Oro", 10000)
   unidad_ejemplo_02 = Unidad("Minery Inc.", "New Mexico", "Project White", "Ancash", 2000000, "Plata", 500000)
-
-
 
   lista_unidades = [unidad_ejemplo_01, unidad_ejemplo_02] #Arreglo de trabajos/proyectos/unidades. Arreglo de objetos
 
@@ -176,14 +212,16 @@ def menu_ingreso():
 
   num_opcion = 0
 
-  while num_opcion != 3:
-    print("--------------------------------") #Posible bucle while num_opcion != 3
-    print("        Menu_de_Ingreso")
-    print("--------------------------------")
-    print("1. Acceso e informe de unidades")
-    print("2. Agregar una unidad (proyecto)")
-    print("3. Salir")
-    print("--------------------------------")
+  while num_opcion != 4:
+    print("")
+    print("┌" + "─" * 40 + "┐")
+    print("│{:^40}│".format("MENÚ DE INGRESO"))
+    print("├" + "─" * 40 + "┤")
+    print("│{:^40}│".format("1. Acceso e informe de unidades"))
+    print("│{:^40}│".format("2. Agregar una unidad (proyecto)"))
+    print("│{:^40}│".format("3. Buscar unidades por empresa"))
+    print("│{:^40}│".format("4. Salir"))
+    print("└" + "─" * 40 + "┘")
 
     num_opcion = int(input("Seleccione un numero: "))
     if num_opcion == 1:
@@ -191,8 +229,14 @@ def menu_ingreso():
 
     if num_opcion == 2:
       lista_unidades.append(agregar_unidad())
+      
+    if num_opcion == 3:
+      buscar_unidad_por_empresa(lista_unidades)
 
-  print("Progama finalizado.¡Vuelva pronto!")
+  print("")
+  print("┌" + "─" * 80 + "┐")
+  print("│{:^80}│".format("Progama finalizado.¡Vuelva pronto!"))
+  print("└" + "─" * 80 + "┘")
 
 def main():
 
